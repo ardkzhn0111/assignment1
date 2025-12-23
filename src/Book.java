@@ -53,8 +53,7 @@ public class Book {
     }
 
     public void setYear(int year) {
-        int CurrYear = 2025;
-        if (year <= 1500 || year >= CurrYear) {
+        if (year <= 1500 || year >= 2025) {
             throw new IllegalArgumentException();
         }
         this.year = year;

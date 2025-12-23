@@ -8,12 +8,17 @@ public class LibraryApp {
 
     public void run() {
         boolean running = true;
-
         while (running) {
-            printMenu();
+            System.out.println("Welcome to Library App!");
+            System.out.println("1. Print all books");
+            System.out.println("2. Add new book");
+            System.out.println("3. Search books by title");
+            System.out.println("4. Borrow a book");
+            System.out.println("5. Return a book");
+            System.out.println("6. Delete a book by id");
+            System.out.println("7. Quit");
             System.out.print("Enter your choice: ");
             String choice = sc.nextLine();
-
             switch (choice) {
                 case "1":
                     printAllBooks();
@@ -43,17 +48,6 @@ public class LibraryApp {
         }
     }
 
-    private void printMenu() {
-        System.out.println("Welcome to Library App!");
-        System.out.println("1. Print all books");
-        System.out.println("2. Add new book");
-        System.out.println("3. Search books by title");
-        System.out.println("4. Borrow a book");
-        System.out.println("5. Return a book");
-        System.out.println("6. Delete a book by id");
-        System.out.println("7. Quit");
-    }
-
     private void printAllBooks() {
         if (books.isEmpty()) {
             System.out.println("No books in the library.");
@@ -67,14 +61,11 @@ public class LibraryApp {
     private void addNewBook(){
         System.out.print("Enter title: ");
         String title = sc.nextLine();
-
         System.out.print("Enter author: ");
         String author = sc.nextLine();
-
         System.out.print("Enter year: ");
         int year = sc.nextInt();
         sc.nextLine();
-
         Book b1 = new Book(title, author, year);
         books.add(b1);
         System.out.println("Book added into library");
@@ -82,16 +73,14 @@ public class LibraryApp {
 
     private void searchBooksByTitle() {
         System.out.print("Enter part of the title to search: ");
-        String keyword = sc.nextLine().toLowerCase();
+        String keyword = sc.nextLine();
         boolean found = false;
-
         for (Book book : books) {
-            if (book.getTitle().toLowerCase().contains(keyword)) {
+            if (book.getTitle().contains(keyword)) {
                 System.out.println(book);
                 found = true;
             }
         }
-
         if (!found) {
             System.out.println("No books found with this title.");
         }
@@ -101,7 +90,6 @@ public class LibraryApp {
         System.out.print("Enter book id to borrow: ");
         int id = Integer.parseInt(sc.nextLine());
         Book book = findBookById(id);
-
         if (book != null) {
             if (book.isAvailable()) {
                 book.markAsBorrowed();
@@ -118,7 +106,6 @@ public class LibraryApp {
         System.out.print("Enter book id to return: ");
         int id = Integer.parseInt(sc.nextLine());
         Book book = findBookById(id);
-
         if (book != null) {
             if (!book.isAvailable()) {
                 book.markAsReturned();
