@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LibraryApp {
-    private List<Book> books = new ArrayList<Book>();
-    private Scanner scanner = new Scanner(System.in);
+    private List<Book> books = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
 
     public void run() {
         boolean running = true;
@@ -12,7 +12,7 @@ public class LibraryApp {
         while (running) {
             printMenu();
             System.out.print("Enter your choice: ");
-            String choice = scanner.nextLine();
+            String choice = sc.nextLine();
 
             switch (choice) {
                 case "1":
@@ -44,7 +44,7 @@ public class LibraryApp {
     }
 
     private void printMenu() {
-        System.out.println("\nWelcome to Library App!");
+        System.out.println("Welcome to Library App!");
         System.out.println("1. Print all books");
         System.out.println("2. Add new book");
         System.out.println("3. Search books by title");
@@ -58,40 +58,31 @@ public class LibraryApp {
         if (books.isEmpty()) {
             System.out.println("No books in the library.");
         } else {
-            for (Book book : books) {
-                System.out.println(book);
+            for (Book b : books) {
+                System.out.println(b);
             }
         }
     }
 
-    private void addNewBook() {
+    private void addNewBook(){
         System.out.print("Enter title: ");
-        String title = scanner.nextLine();
+        String title = sc.nextLine();
+
         System.out.print("Enter author: ");
-        String author = scanner.nextLine();
+        String author = sc.nextLine();
 
-        int year;
-        try {
-            System.out.print("Enter year: ");
-            year = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid year. Please enter a number.");
-            return; // stop adding book
-        }
+        System.out.print("Enter year: ");
+        int year = sc.nextInt();
+        sc.nextLine();
 
-        try {
-            Book book = new Book(title, author, year);
-            books.add(book);
-            System.out.println("Book added: " + book);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
+        Book b1 = new Book(title, author, year);
+        books.add(b1);
+        System.out.println("Book added into library");
     }
 
     private void searchBooksByTitle() {
         System.out.print("Enter part of the title to search: ");
-        String keyword = scanner.nextLine().toLowerCase();
+        String keyword = sc.nextLine().toLowerCase();
         boolean found = false;
 
         for (Book book : books) {
@@ -108,7 +99,7 @@ public class LibraryApp {
 
     private void borrowBook() {
         System.out.print("Enter book id to borrow: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = Integer.parseInt(sc.nextLine());
         Book book = findBookById(id);
 
         if (book != null) {
@@ -125,7 +116,7 @@ public class LibraryApp {
 
     private void returnBook() {
         System.out.print("Enter book id to return: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = Integer.parseInt(sc.nextLine());
         Book book = findBookById(id);
 
         if (book != null) {
@@ -142,7 +133,7 @@ public class LibraryApp {
 
     private void deleteBookById() {
         System.out.print("Enter book id to delete: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = Integer.parseInt(sc.nextLine());
         Book book = findBookById(id);
 
         if (book != null) {
@@ -162,5 +153,3 @@ public class LibraryApp {
         return null;
     }
 }
-
-

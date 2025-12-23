@@ -1,4 +1,3 @@
-
 public class Book {
     private int id;
     private static int idGen = 1;
@@ -55,7 +54,7 @@ public class Book {
 
     public void setYear(int year) {
         int CurrYear = 2025;
-        if (year < 1500 || year > CurrYear) {
+        if (year <= 1500 || year >= CurrYear) {
             throw new IllegalArgumentException();
         }
         this.year = year;
@@ -80,6 +79,6 @@ public class Book {
     @Override
     public String toString() {
         return "id = " + id + ", title = " + title + ", author = " + author + ", year = " + year +
-                ", available = " + available;
+                ", available status = " + available;
     }
 }

@@ -23,8 +23,9 @@ public class Rectangle {
     public void setWidth(double width) {
         if (width > 0) {
             this.width = width;
+        } else {
+            throw new IllegalArgumentException("must be positive");
         }
-        throw new IllegalArgumentException();
     }
 
     public double getHeight() {
@@ -34,8 +35,9 @@ public class Rectangle {
     public void setHeight(double height) {
         if (height > 0) {
             this.height = height;
+        } else {
+            throw new IllegalArgumentException("must be positive");
         }
-        throw new IllegalArgumentException();
     }
 
     public double area() {
@@ -48,6 +50,8 @@ public class Rectangle {
 
     @Override
     public String toString() {
-        return "id = " + id + ", width = " + width + ", height = " + height;
+        return "id = " + id +
+                ", width = " + width +
+                ", height = " + height;
     }
 }
