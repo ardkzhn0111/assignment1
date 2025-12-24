@@ -132,9 +132,9 @@ public class LibraryApp {
     }
 
     private Book findBookById(int id) {
-        for (Book book : books) {
-            if (book.getId() == id) {
-                return book;
+        for (Book b : books) {
+            if (b.getId() == id) {
+                return b;
             }
         }
         return null;

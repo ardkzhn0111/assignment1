@@ -16,8 +16,8 @@ public class Main {
 //        System.out.println(r2.area());
 //        System.out.println(r2.perimeter());
 //
-//        r2.setWidth(5.0);
-//        r2.setHeight(4.0);
+//        r2.setWidth(55664.0);
+//        r2.setHeight(4.5645);
 //        System.out.println(r2);
 //        System.out.println(r2.area());
 
